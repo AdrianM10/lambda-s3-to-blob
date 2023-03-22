@@ -1,11 +1,11 @@
-"""An Azure RM Python Pulumi program"""
+"""An Azure RM Python Pulumi program to create an Azure Storage Account and Container"""
 
 import pulumi
 from pulumi_azure_native import storage
 from pulumi_azure_native import resources
 
 # Create an Azure Resource Group
-resource_group = resources.ResourceGroup("rg_demo")
+resource_group = resources.ResourceGroup("rg-demo")
 
 # Create an Azure resource (Storage Account)
 account = storage.StorageAccount(
@@ -38,5 +38,7 @@ primary_key = (
 pulumi.export("primary_storage_key", primary_key)
 pulumi.export("storage_account_name", account.name)
 pulumi.export("container_name", blob_container.name)
-pulumi.export("connection_string", pulumi.Output.concat("DefaultEndpointsProtocol=https;AccountName=", account.name, ";AccountKey=", primary_key, ";EndpointSuffix=core.windows.net"))
+pulumi.export("connection_string", pulumi.Output.concat("DefaultEndpointsProtocol=https;AccountName=", 
+                                                        account.name, ";AccountKey=", primary_key, 
+                                                        ";EndpointSuffix=core.windows.net"))
 
