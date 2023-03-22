@@ -2,7 +2,6 @@ import boto3
 import botocore
 import os
 import tempfile
-import time
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
 s3 = boto3.resource('s3')
@@ -31,8 +30,8 @@ def lambda_handler(event, context):
         upload_file_path = os.path.join(temFilePath, file_name)
 
         try:
-            # Download the object from s3
-            s3.meta.client.download_file(bucket, key, key)
+            # Download the file from s3
+            s3.meta.client.download_file(bucket, key, file_name)
 
             def upload_to_blob_storage(file_path, file_name):
                 """Upload file to Azure storage as blob from /tmp folder"""
