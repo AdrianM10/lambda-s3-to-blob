@@ -2,6 +2,7 @@
 
 ![](/s3lambdablob.png)
 
+AWS Lambda Function that transfers files from S3 to an Azure Blob Container.
 
 Blog Post 📝
 
